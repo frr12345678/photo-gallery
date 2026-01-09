@@ -1,0 +1,328 @@
+# 📸 Lumina Gallery
+
+A modern, responsive, and accessible photo gallery application with stunning UI. Browse beautiful photographs with smooth animations, lightbox viewing, and intuitive navigation.
+
+[![Created by Serkanby](https://img.shields.io/badge/Created%20by-Serkanby-blue?style=flat-square)](https://serkanbayraktar.com/)
+[![GitHub](https://img.shields.io/badge/GitHub-Serkanbyx-181717?style=flat-square&logo=github)](https://github.com/Serkanbyx)
+
+## Features
+
+- **Masonry Grid Layout**: Beautiful CSS Grid-based masonry layout that automatically adjusts to image aspect ratios
+- **Lightbox Modal**: Full-screen image viewing with smooth transitions and backdrop blur effects
+- **Keyboard Navigation**: Complete keyboard support including Arrow keys, Escape, Home, and End
+- **Touch/Swipe Support**: Mobile-friendly swipe gestures for navigating between images
+- **Lazy Loading**: Optimized performance with native lazy loading (`loading="lazy"`)
+- **Responsive Images**: Multiple image sizes with `srcset` for optimal loading on all devices
+- **Category Filtering**: Filter images by categories (Nature, Architecture, People)
+- **Accessibility (a11y)**: Full ARIA support, focus management, and screen reader compatibility
+- **Dark Theme**: Elegant dark moody theme with gold accents
+
+## Live Demo
+
+[🎮 View Live Demo](https://serkanbyx.github.io/lumina-gallery/)
+
+## Screenshots
+
+### Main Gallery View
+
+The main gallery displays images in a responsive masonry grid layout with hover effects revealing image details.
+
+### Lightbox View
+
+Click any image to open the full-screen lightbox with navigation controls and image information.
+
+### Mobile View
+
+Fully responsive design that adapts to all screen sizes with touch-friendly interactions.
+
+## Technologies
+
+- **HTML5**: Semantic markup with accessibility attributes (ARIA labels, roles)
+- **CSS3**: Modern CSS features including Grid, Flexbox, Custom Properties, Animations, and Backdrop Filter
+- **Vanilla JavaScript (ES6+)**: Modern JavaScript with modules, async/await, and event delegation
+- **Unsplash API**: Optional integration for dynamic photo loading (includes fallback images)
+- **Google Fonts**: Playfair Display and Source Sans 3 typography
+
+## Installation
+
+### Local Development
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/Serkanbyx/lumina-gallery.git
+   cd lumina-gallery
+   ```
+
+2. **Open in browser**
+
+   Simply open `index.html` in your browser, or use a local server:
+
+   **Using Python:**
+
+   ```bash
+   python -m http.server 8080
+   ```
+
+   **Using Node.js:**
+
+   ```bash
+   npx serve
+   ```
+
+   **Using VS Code:**
+
+   - Install "Live Server" extension
+   - Right-click on `index.html` and select "Open with Live Server"
+
+3. **Access the application**
+   ```
+   http://localhost:8080
+   ```
+
+### Unsplash API Setup (Optional)
+
+To use dynamic images from Unsplash:
+
+1. Create an account at [Unsplash Developers](https://unsplash.com/developers)
+2. Create a new application to get your Access Key
+3. Update `js/app.js`:
+   ```javascript
+   const CONFIG = {
+     unsplashAccessKey: "YOUR_ACCESS_KEY_HERE",
+     useFallbackImages: false,
+     // ...
+   };
+   ```
+
+## Usage
+
+1. **Browse Gallery**: Scroll through the image grid to explore photographs
+2. **Filter by Category**: Click category buttons (All, Nature, Architecture, People) to filter images
+3. **View Full Size**: Click any image to open the lightbox modal
+4. **Navigate Images**: Use arrow buttons or keyboard arrows to move between images
+5. **Close Lightbox**: Click the X button, press Escape, or click outside the image
+6. **Load More**: Click "Load More" button to fetch additional images
+
+## How It Works?
+
+### Masonry Grid Layout
+
+The gallery uses CSS Grid with dynamic row spans based on image aspect ratios:
+
+```javascript
+function createGalleryItemHTML(image, index) {
+  // Calculate grid row span based on aspect ratio
+  const rowSpan = Math.ceil((1 / image.aspectRatio) * 25) + 2;
+
+  return `
+        <article style="grid-row: span ${rowSpan};">
+            <!-- Image content -->
+        </article>
+    `;
+}
+```
+
+### Responsive Images
+
+Images are served with multiple sizes using `srcset`:
+
+```html
+<img
+  src="image-400w.jpg"
+  srcset="image-400w.jpg 400w, image-1080w.jpg 1080w"
+  sizes="(max-width: 480px) 50vw, (max-width: 900px) 33vw, 25vw"
+  loading="lazy"
+  decoding="async"
+/>
+```
+
+### Keyboard Navigation
+
+Full keyboard support for accessibility:
+
+| Key               | Action                    |
+| ----------------- | ------------------------- |
+| `Enter` / `Space` | Open selected image       |
+| `Escape`          | Close lightbox            |
+| `Arrow Left`      | Previous image            |
+| `Arrow Right`     | Next image                |
+| `Home`            | First image               |
+| `End`             | Last image                |
+| `Tab`             | Navigate between elements |
+
+## Customization
+
+### Change Color Theme
+
+Modify CSS custom properties in `css/styles.css`:
+
+```css
+:root {
+  /* Primary Colors */
+  --color-bg-primary: #0a0a0b;
+  --color-accent-primary: #c9a962;
+  --color-accent-secondary: #e8d5a3;
+
+  /* Text Colors */
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #a8a8a8;
+}
+```
+
+### Add New Categories
+
+1. Add button in `index.html`:
+
+   ```html
+   <button
+     class="nav-btn"
+     data-category="animals"
+     data_tr="Hayvanlar"
+     data_en="Animals"
+   >
+     Animals
+   </button>
+   ```
+
+2. Update categories in `js/app.js`:
+   ```javascript
+   const CONFIG = {
+     categories: {
+       // ...existing categories
+       animals: "animals,wildlife,pets",
+     },
+   };
+   ```
+
+### Add Custom Images
+
+Add images to the `fallbackImages` array in `js/app.js`:
+
+```javascript
+const fallbackImages = [
+  {
+    id: "unique-id",
+    title: "Image Title",
+    author: "Photographer Name",
+    category: "nature",
+    urls: {
+      small: "url-to-small-image",
+      regular: "url-to-regular-image",
+      full: "url-to-full-image",
+    },
+    alt: "Image description for accessibility",
+    aspectRatio: 1.5, // width / height
+  },
+];
+```
+
+## Features in Detail
+
+### Completed Features
+
+- ✅ Responsive masonry grid layout
+- ✅ Full-screen lightbox with blur overlay
+- ✅ Keyboard navigation support
+- ✅ Touch/swipe gestures for mobile
+- ✅ Category filtering
+- ✅ Lazy loading images
+- ✅ Responsive srcset implementation
+- ✅ Dark theme with elegant typography
+- ✅ ARIA accessibility support
+- ✅ Smooth CSS animations
+- ✅ Focus trap in lightbox modal
+
+### Future Features
+
+- [ ] Image download functionality
+- [ ] Social sharing buttons
+- [ ] Infinite scroll pagination
+- [ ] Image zoom on lightbox
+- [ ] Favorites/bookmarks with localStorage
+- [ ] Search functionality
+- [ ] Multiple theme options (light/dark)
+
+## Project Structure
+
+```
+lumina-gallery/
+├── index.html          # Main HTML file
+├── css/
+│   └── styles.css      # All styles (800+ lines)
+├── js/
+│   └── app.js          # Application logic (820+ lines)
+├── README.md           # Documentation
+├── .gitignore          # Git ignore rules
+└── LICENSE             # MIT License
+```
+
+## Contributing
+
+Contributions are welcome! Please follow these steps:
+
+1. **Fork the repository**
+
+   ```bash
+   git fork https://github.com/Serkanbyx/lumina-gallery.git
+   ```
+
+2. **Create a feature branch**
+
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Make your changes and commit**
+
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+
+4. **Push to your branch**
+
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+5. **Open a Pull Request**
+
+### Commit Message Format
+
+- `feat:` New feature
+- `fix:` Bug fix
+- `docs:` Documentation changes
+- `style:` Code style changes (formatting, etc.)
+- `refactor:` Code refactoring
+- `perf:` Performance improvements
+- `test:` Adding tests
+- `chore:` Maintenance tasks
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Developer
+
+**Serkan Bayraktar**
+
+- 🌐 Website: [serkanbayraktar.com](https://serkanbayraktar.com/)
+- 💻 GitHub: [@Serkanbyx](https://github.com/Serkanbyx)
+- 📧 Email: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
+
+## Acknowledgments
+
+- **[Unsplash](https://unsplash.com/)** - Beautiful free photos
+- **[Google Fonts](https://fonts.google.com/)** - Playfair Display & Source Sans 3 fonts
+- **[Shields.io](https://shields.io/)** - README badges
+
+## Contact
+
+- 🐛 **Found a bug?** [Open an issue](https://github.com/Serkanbyx/lumina-gallery/issues)
+- 💡 **Have a suggestion?** [Start a discussion](https://github.com/Serkanbyx/lumina-gallery/discussions)
+- 📧 **Email**: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
+- 🌐 **Website**: [serkanbayraktar.com](https://serkanbayraktar.com/)
+
+---
+
+⭐ If you like this project, don't forget to give it a star!

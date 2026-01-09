@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Modern ve responsive fotoğraf galerisi uygulaması"
+    />
+    <title>Photo Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-content">
+        <h1 class="logo">Lumina Gallery</h1>
+        <nav class="nav">
+          <button
+            class="nav-btn active"
+            data-category="all"
+            data_tr="Tümü"
+            data_en="All"
+          >
+            Tümü
+          </button>
+          <button
+            class="nav-btn"
+            data-category="nature"
+            data_tr="Doğa"
+            data_en="Nature"
+          >
+            Doğa
+          </button>
+          <button
+            class="nav-btn"
+            data-category="architecture"
+            data_tr="Mimari"
+            data_en="Architecture"
+          >
+            Mimari
+          </button>
+          <button
+            class="nav-btn"
+            data-category="people"
+            data_tr="İnsanlar"
+            data_en="People"
+          >
+            İnsanlar
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h2
+          class="hero-title"
+          data_tr="Anları Yakala"
+          data_en="Capture Moments"
+        >
+          Anları Yakala
+        </h2>
+        <p
+          class="hero-subtitle"
+          data_tr="Dünyanın en güzel fotoğraflarından oluşan koleksiyonumuzu keşfedin"
+          data_en="Discover our collection of the world's most beautiful photographs"
+        >
+          Dünyanın en güzel fotoğraflarından oluşan koleksiyonumuzu keşfedin
+        </p>
+      </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <main class="gallery-container">
+      <div class="gallery-grid" id="galleryGrid">
+        <!-- Images will be dynamically loaded here -->
+      </div>
+
+      <!-- Loading Spinner -->
+      <div class="loader" id="loader">
+        <div class="loader-spinner"></div>
+        <p data_tr="Fotoğraflar yükleniyor..." data_en="Loading photos...">
+          Fotoğraflar yükleniyor...
+        </p>
+      </div>
+
+      <!-- Load More Button -->
+      <button
+        class="load-more-btn"
+        id="loadMoreBtn"
+        data_tr="Daha Fazla Yükle"
+        data_en="Load More"
+      >
+        Daha Fazla Yükle
+      </button>
+    </main>
+
+    <!-- Lightbox Modal -->
+    <div
+      class="lightbox"
+      id="lightbox"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Fotoğraf görüntüleme"
+    >
+      <div class="lightbox-overlay"></div>
+      <div class="lightbox-content">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Kapat">
+          <svg
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <button
+          class="lightbox-nav lightbox-prev"
+          id="lightboxPrev"
+          aria-label="Önceki fotoğraf"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          >
+            <polyline points="15,18 9,12 15,6"></polyline>
+          </svg>
+        </button>
+
+        <div class="lightbox-image-container">
+          <img class="lightbox-image" id="lightboxImage" src="" alt="" />
+          <div class="lightbox-loader">
+            <div class="loader-spinner"></div>
+          </div>
+        </div>
+
+        <button
+          class="lightbox-nav lightbox-next"
+          id="lightboxNext"
+          aria-label="Sonraki fotoğraf"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="32"
+            height="32"
+            stroke="currentColor"
+            stroke-width="2"
+            fill="none"
+          >
+            <polyline points="9,18 15,12 9,6"></polyline>
+          </svg>
+        </button>
+
+        <div class="lightbox-info">
+          <h3 class="lightbox-title" id="lightboxTitle"></h3>
+          <p class="lightbox-author" id="lightboxAuthor"></p>
+          <span class="lightbox-counter" id="lightboxCounter"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p data_tr="Fotoğraflar" data_en="Photos by">Fotoğraflar</p>
+      <a href="https://unsplash.com" target="_blank" rel="noopener noreferrer"
+        >Unsplash</a
+      >
+      <span class="footer-divider">|</span>
+      <p data_tr="2024 Lumina Gallery" data_en="2024 Lumina Gallery">
+        2024 Lumina Gallery
+      </p>
+    </footer>
+
+    <script src="js/app.js" type="module"></script>
+  </body>
+</html>

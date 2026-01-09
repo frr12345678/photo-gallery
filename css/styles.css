@@ -14,6 +14,10 @@
     --color-accent-secondary: #e8d5a3;
     --color-accent-glow: rgba(201, 169, 98, 0.3);
     
+    /* Favorite Color */
+    --color-favorite: #e74c3c;
+    --color-favorite-glow: rgba(231, 76, 60, 0.4);
+    
     /* Text Colors */
     --color-text-primary: #f5f5f5;
     --color-text-secondary: #a8a8a8;
@@ -114,6 +118,11 @@ a:hover {
     color: var(--color-accent-secondary);
 }
 
+/* Hidden utility class */
+.hidden {
+    display: none !important;
+}
+
 /* ============================================
    Header Styles
    ============================================ */
@@ -151,6 +160,81 @@ a:hover {
     background-clip: text;
 }
 
+/* ============================================
+   Search Box Styles
+   ============================================ */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 300px;
+    flex: 1;
+}
+
+.search-input {
+    width: 100%;
+    padding: var(--spacing-xs) var(--spacing-md);
+    padding-right: 70px;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+    background: var(--color-bg-tertiary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    outline: none;
+    transition: all var(--transition-base);
+}
+
+.search-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.search-input:focus {
+    border-color: var(--color-accent-primary);
+    box-shadow: 0 0 0 3px var(--color-accent-glow);
+}
+
+.search-btn {
+    position: absolute;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    color: var(--color-text-secondary);
+    background: transparent;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.search-btn:hover {
+    color: var(--color-accent-primary);
+    background: var(--color-bg-card);
+}
+
+.search-clear {
+    position: absolute;
+    right: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-muted);
+    background: transparent;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.search-clear:hover {
+    color: var(--color-text-primary);
+    background: var(--color-bg-card);
+}
+
+/* ============================================
+   Navigation Styles
+   ============================================ */
 .nav {
     display: flex;
     gap: var(--spacing-xs);
@@ -168,6 +252,9 @@ a:hover {
     transition: all var(--transition-base);
     position: relative;
     overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
 }
 
 .nav-btn::before {
@@ -195,6 +282,22 @@ a:hover {
 
 .nav-btn.active::before {
     opacity: 0;
+}
+
+.nav-btn-favorites .heart-icon {
+    transition: transform var(--transition-fast);
+}
+
+.nav-btn-favorites:hover .heart-icon {
+    transform: scale(1.2);
+}
+
+.nav-btn-favorites.active {
+    background: var(--color-favorite);
+}
+
+.nav-btn-favorites.has-favorites .heart-icon {
+    fill: var(--color-favorite);
 }
 
 /* ============================================
@@ -255,6 +358,71 @@ a:hover {
 @keyframes shimmer {
     0% { background-position: 200% center; }
     100% { background-position: -200% center; }
+}
+
+/* ============================================
+   Search Results Info
+   ============================================ */
+.search-results-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background: var(--color-bg-tertiary);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+}
+
+.search-results-info strong {
+    color: var(--color-accent-primary);
+}
+
+.clear-search-btn {
+    margin-left: auto;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.clear-search-btn:hover {
+    color: var(--color-text-primary);
+    background: var(--color-accent-primary);
+}
+
+/* ============================================
+   No Results & Empty States
+   ============================================ */
+.no-results,
+.empty-favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-2xl);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+.no-results svg,
+.empty-favorites svg {
+    opacity: 0.5;
+}
+
+.no-results h3,
+.empty-favorites h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--color-text-secondary);
+}
+
+.no-results p,
+.empty-favorites p {
+    font-size: 0.875rem;
 }
 
 /* ============================================
@@ -421,6 +589,57 @@ a:hover {
     background: var(--color-accent-primary);
 }
 
+/* Favorite Button on Gallery Item */
+.gallery-item-favorite {
+    position: absolute;
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 50%;
+    color: var(--color-text-primary);
+    z-index: 3;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: all var(--transition-base);
+}
+
+.gallery-item:hover .gallery-item-favorite,
+.gallery-item:focus-within .gallery-item-favorite,
+.gallery-item-favorite.is-favorite {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-item-favorite:hover {
+    background: var(--color-favorite);
+    transform: scale(1.1);
+}
+
+.gallery-item-favorite.is-favorite {
+    color: var(--color-favorite);
+}
+
+.gallery-item-favorite.is-favorite svg {
+    fill: var(--color-favorite);
+}
+
+.gallery-item-favorite svg {
+    width: 18px;
+    height: 18px;
+    transition: transform var(--transition-fast);
+}
+
+.gallery-item-favorite:active svg {
+    transform: scale(0.8);
+}
+
 /* Focus styles for accessibility */
 .gallery-item:focus {
     outline: none;
@@ -429,6 +648,75 @@ a:hover {
 .gallery-item:focus-visible {
     outline: 2px solid var(--color-accent-primary);
     outline-offset: 2px;
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+.skeleton-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--color-bg-card);
+}
+
+.skeleton-image {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        var(--color-bg-card) 0%,
+        var(--color-bg-tertiary) 50%,
+        var(--color-bg-card) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+}
+
+.skeleton-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-md);
+}
+
+.skeleton-title {
+    height: 20px;
+    width: 70%;
+    margin-bottom: var(--spacing-xs);
+    background: linear-gradient(
+        90deg,
+        var(--color-bg-tertiary) 0%,
+        var(--color-bg-secondary) 50%,
+        var(--color-bg-tertiary) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+.skeleton-author {
+    height: 14px;
+    width: 50%;
+    background: linear-gradient(
+        90deg,
+        var(--color-bg-tertiary) 0%,
+        var(--color-bg-secondary) 50%,
+        var(--color-bg-tertiary) 100%
+    );
+    background-size: 200% 100%;
+    animation: skeletonShimmer 1.5s infinite;
+    border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonShimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
 }
 
 /* ============================================
@@ -442,10 +730,6 @@ a:hover {
     gap: var(--spacing-md);
     padding: var(--spacing-2xl);
     color: var(--color-text-secondary);
-}
-
-.loader.hidden {
-    display: none;
 }
 
 .loader-spinner {
@@ -462,54 +746,18 @@ a:hover {
 }
 
 /* ============================================
-   Load More Button
+   Scroll Sentinel & End of Content
    ============================================ */
-.load-more-btn {
-    display: block;
-    margin: var(--spacing-xl) auto 0;
-    padding: var(--spacing-md) var(--spacing-xl);
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-accent-primary);
-    background: transparent;
-    border: 2px solid var(--color-accent-primary);
-    border-radius: var(--radius-xl);
-    transition: all var(--transition-base);
-    position: relative;
-    overflow: hidden;
+.scroll-sentinel {
+    height: 1px;
+    width: 100%;
 }
 
-.load-more-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--color-accent-primary);
-    transform: translateY(100%);
-    transition: transform var(--transition-base);
-}
-
-.load-more-btn span {
-    position: relative;
-    z-index: 1;
-}
-
-.load-more-btn:hover {
-    color: var(--color-bg-primary);
-}
-
-.load-more-btn:hover::before {
-    transform: translateY(0);
-}
-
-.load-more-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-}
-
-.load-more-btn.hidden {
-    display: none;
+.end-of-content {
+    text-align: center;
+    padding: var(--spacing-xl);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
 }
 
 /* ============================================
@@ -550,10 +798,86 @@ a:hover {
     padding: var(--spacing-lg);
 }
 
-.lightbox-close {
+/* Lightbox Top Controls */
+.lightbox-top-controls {
     position: absolute;
     top: var(--spacing-md);
+    left: var(--spacing-md);
     right: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.slideshow-controls {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.slideshow-speed {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+}
+
+.slideshow-speed select {
+    background: transparent;
+    border: none;
+    color: var(--color-text-primary);
+    font-size: 0.75rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.slideshow-speed select option {
+    background: var(--color-bg-secondary);
+}
+
+.lightbox-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.lightbox-control-btn {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.lightbox-control-btn:hover {
+    background: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+}
+
+.lightbox-control-btn.is-favorite {
+    color: var(--color-favorite);
+}
+
+.lightbox-control-btn.is-favorite:hover {
+    background: var(--color-favorite);
+    color: white;
+}
+
+.lightbox-control-btn.is-playing {
+    background: var(--color-accent-primary);
+    color: var(--color-bg-primary);
+}
+
+.lightbox-close {
     width: 48px;
     height: 48px;
     display: flex;
@@ -563,7 +887,6 @@ a:hover {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transition: all var(--transition-fast);
-    z-index: 10;
 }
 
 .lightbox-close:hover {
@@ -637,10 +960,6 @@ a:hover {
     justify-content: center;
 }
 
-.lightbox-loader.hidden {
-    display: none;
-}
-
 .lightbox-info {
     position: absolute;
     bottom: var(--spacing-lg);
@@ -674,6 +993,34 @@ a:hover {
     color: var(--color-accent-primary);
     font-weight: 500;
     letter-spacing: 0.1em;
+}
+
+/* Slideshow Progress Bar */
+.slideshow-progress {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.slideshow-progress-bar {
+    height: 100%;
+    width: 0;
+    background: var(--color-accent-primary);
+    transition: width linear;
+}
+
+/* Fullscreen Styles */
+.lightbox.fullscreen .lightbox-image {
+    max-width: 100vw;
+    max-height: 100vh;
+    border-radius: 0;
+}
+
+.lightbox.fullscreen .lightbox-info {
+    bottom: var(--spacing-md);
 }
 
 /* ============================================
@@ -711,6 +1058,12 @@ a:hover {
         text-align: center;
     }
     
+    .search-container {
+        order: 3;
+        max-width: 100%;
+        width: 100%;
+    }
+    
     .nav {
         justify-content: center;
     }
@@ -722,11 +1075,25 @@ a:hover {
     
     .hero {
         min-height: 40vh;
-        padding-top: calc(var(--spacing-xl) + 100px);
+        padding-top: calc(var(--spacing-xl) + 140px);
     }
     
     .gallery-container {
         padding: 0 var(--spacing-sm) var(--spacing-xl);
+    }
+    
+    .lightbox-top-controls {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-end;
+    }
+    
+    .slideshow-controls {
+        order: 2;
+    }
+    
+    .lightbox-actions {
+        order: 1;
     }
     
     .lightbox-nav {
@@ -766,6 +1133,15 @@ a:hover {
     .gallery-item-author {
         font-size: 0.75rem;
     }
+    
+    .lightbox-control-btn {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .slideshow-speed {
+        display: none;
+    }
 }
 
 /* ============================================
@@ -792,8 +1168,8 @@ a:hover {
     .header,
     .hero,
     .lightbox,
-    .load-more-btn,
-    .loader {
+    .loader,
+    .search-container {
         display: none;
     }
     

